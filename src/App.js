@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Main from './navbar.js'
 import Liste from './liste'
 import './App.css';
+import Hoc from './hoc.js'
+import './hoc.css'
 const newstab=[{
   id:'1',
   title:'LA GRANDE MURAIL',
@@ -15,7 +17,7 @@ const newstab=[{
   title:'SOUS UN AUTRE JOURS',
   image:'https://img6.cdn.cinoche.com/images/6105e3dc836775d05b87471a3c08fe19.jpg',
   article:'In point #1, I said that React is just for views. The obvious question then is, Where do I put all my state and logic? Im glad you asked! You may already be aware of Flux, which is a style/pattern/architecture for designing web applications,  most commonly ones that use React for rendering. There are several frameworks out there that implement the ideas of Flux,  but without a doubt the one that I recommend is Redux.js*.',
-  rating:3
+  rating:1
   },
   {
   id:'3',
@@ -31,7 +33,8 @@ class App extends Component {
     super(props)
       this.state={
         news:newstab ,
-        filtred:newstab 
+        filtred:newstab ,
+        isloading:true
       }}
       serach(keyword){
         let filter1=this.state.news.filter((el,i)=>{return el.title.toLocaleLowerCase().indexOf(keyword)>-1})
@@ -40,6 +43,13 @@ class App extends Component {
     searchrating(rate){
       let filter1=this.state.news.filter((el,i)=>{return el.rating === rate})
       this.setState({filtred:filter1})
+    
+
+  }
+  componentDidMount(){
+    return setTimeout(() => {this.setState({isloading:false})
+      
+    }, 2000);
   }
   render() {
     return (
@@ -47,10 +57,12 @@ class App extends Component {
       <Main searchname={(keyword)=>this.serach(keyword)}
       searchrating={(rate)=>this.searchrating(rate)}/>
 
-      <Liste news={this.state.filtred}/>
+      <Liste news={this.state.filtred}
+      isloading={this.state.isloading}/>
+
       </div>
     );
   }
 }
 
-export default App;
+export default Hoc(App) ;

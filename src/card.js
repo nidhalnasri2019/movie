@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {Card} from 'react-bootstrap';
 import StarRatingComponent from 'react-star-rating-component';
-
 import './card.css'
 class Item extends Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class Item extends Component {
   }
     
     render() { 
-      const {item}=this.props
+      const {item,id,remove}=this.props
         return ( <div className='carte'>
     
     <Card style={{ width: '18rem' }}>
@@ -22,6 +21,7 @@ class Item extends Component {
         />
   <Card.Body>
     <Card.Title>{item.title}</Card.Title>
+    <button id="bt" onClick={()=>remove(id)}>remove</button>
     
     
   </Card.Body>
@@ -32,5 +32,5 @@ class Item extends Component {
         </div> );
     }
 }
- 
+
 export default Item;

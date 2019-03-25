@@ -6,4 +6,10 @@
 }
 #btn{
     margin-right: 16%;
+    background-color: #88082b;
+    height: 37px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    border-color: transparent;
 }

@@ -6,3 +6,12 @@
 #img{
     height: 320px;
 }
+#bt{
+    margin-right: -76%;
+    background-color: #88082b;
+    height: 37px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    border-color: transparent;
+}

@@ -26,7 +26,7 @@ this.props.searchname(event.target.value)
       <Nav.Link href="#pricing">Pricing</Nav.Link> */}
       
     </Nav>
-    <Example/>
+    <Example  addmovie={(x)=>this.props.add(x)}/>
     <Rat   searchrating={rate=>this.props.searchrating(rate)}/>
     <Form inline>
   
